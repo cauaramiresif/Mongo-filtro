@@ -164,8 +164,6 @@ res.render("musica/edtok")
 
 })
 
-//Edição
-
 app.get('/genero/edt/:id', async (req, res) => {
 
 const genero = await Genero.findById(req.params.id)
@@ -181,8 +179,6 @@ const genero = await Genero.findByIdAndUpdate(req.params.id, req.body)
 res.render("genero/edtok")
 
 })
-
-//Edição
 
 app.get('/artista/edt/:id', async (req, res) => {
 
@@ -200,8 +196,6 @@ res.render("artista/edtok")
 
 })
 
-//Edição
-
 app.get('/playlist/edt/:id', async (req, res) => {
 
 const playlist = await Playlist.findById(req.params.id)
@@ -216,6 +210,42 @@ const playlist = await Playlist.findByIdAndUpdate(req.params.id, req.body)
 
 res.render("playlist/edtok")
 
+})
+
+//rota para pesquisar musica por nome
+app.post('/musica/lst', async (req, res) => {
+  const { pesquisar } = req.body;
+  const musicas = await Musica.find({
+    nome: new RegExp(pesquisar, 'i')
+  });
+  res.render("musica/lst", { musicas });
+})
+
+//rota para pesquisar genero por nome
+app.post('/genero/lst', async (req, res) => {
+  const { pesquisar } = req.body;
+  const generos = await Genero.find({
+    nome: new RegExp(pesquisar, 'i')
+  });
+  res.render("genero/lst", { generos });
+})
+
+//rota para pesquisar artista por nome
+app.post('/artista/lst', async (req, res) => {
+  const { pesquisar } = req.body;
+  const artistas = await Artista.find({
+    nome: new RegExp(pesquisar, 'i')
+  });
+  res.render("artista/lst", { artistas });
+})
+
+//rota para pesquisar playlist por nome
+app.post('/playlist/lst', async (req, res) => {
+  const { pesquisar } = req.body;
+  const playlists = await Playlist.find({
+    nome: new RegExp(pesquisar, 'i')
+  });
+  res.render("playlist/lst", { playlists });
 })
 
 app.listen(PORT, ()=>{
