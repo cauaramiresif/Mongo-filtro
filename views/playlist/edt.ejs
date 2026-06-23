@@ -1,0 +1,32 @@
+<%-include('../cabecalho.ejs')%>
+ <header>
+        <h3>Editar Playlist</h3>
+      </header>
+      <div class="content">
+        <form id="form-instrumento" method="post" autocomplete="off" >
+          <div class="grid">
+            <div>
+              <label for="nome">ID da Playlist</label>
+              <input id="id" value="<%=playlist.id%>" name="id" type="text" placeholder="Ex:Gope" required>
+            </div>
+            <div>
+              <label for="nome">Nome da Playlist</label>
+              <input id="nome" value="<%=playlist.nome%>" name="nome" type="text" placeholder="Ex:Gope" required>
+            </div>
+            <div>
+              <label for="nome">Música 1</label>
+              <input id="musica1" value="<%=playlist.musica1%>" name="musica1" type="text" placeholder="Ex:Gope" required>
+            </div>
+            <div>
+              <label for="nome">Música 2</label>
+              <input id="musica2" value="<%=playlist.musica2%>" name="musica2" type="text" placeholder="Ex:Gope" required>
+            </div>
+           <div class="field-help">Os campos com * são obrigatórios.</div>
+          <footer>
+            <a type="button" class="btn ghost" id="btn-cancelar" href="/playlist/lst">Cancelar</a>
+            <button type="submit" class="btn primary">Editar Playlist</button>
+          </footer>
+        </form>
+      </div>
+
+  <%-include('../rodape.ejs')%>
